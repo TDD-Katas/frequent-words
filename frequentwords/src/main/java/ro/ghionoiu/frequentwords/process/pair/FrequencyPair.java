@@ -10,7 +10,7 @@ import ro.ghionoiu.frequentwords.context.output.OutputChannel;
  *
  * @author Iulian Ghionoiu <iulian.ghionoiu@exenne.ro>
  */
-public final class FrequencyPair implements Comparable<FrequencyPair>{
+public class FrequencyPair implements Comparable<FrequencyPair>{
     private final int frequency;
     private final String word;
 
@@ -41,7 +41,7 @@ public final class FrequencyPair implements Comparable<FrequencyPair>{
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (!(obj instanceof FrequencyPair)) {
             return false;
         }
         final FrequencyPair other = (FrequencyPair) obj;

@@ -4,6 +4,7 @@
  */
 package ro.ghionoiu.frequentwords.process;
 
+import ro.ghionoiu.frequentwords.process.pair.FrequencyPairSortedSet;
 import org.junit.Test;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -12,11 +13,11 @@ import static org.hamcrest.CoreMatchers.nullValue;
  *
  * @author Iulian Ghionoiu <iulian.ghionoiu@exenne.ro>
  */
-public class WordSortedSetTest {
+public class FrequencyPairSortedSetTest {
     
     @Test
     public void uses_natural_ordering() {
-        WordSortedSet instance = new WordSortedSet();
+        FrequencyPairSortedSet instance = new FrequencyPairSortedSet();
         
         assertThat(instance.comparator(), nullValue());
     }

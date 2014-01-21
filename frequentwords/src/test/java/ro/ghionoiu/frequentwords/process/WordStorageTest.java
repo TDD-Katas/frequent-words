@@ -4,6 +4,7 @@
  */
 package ro.ghionoiu.frequentwords.process;
 
+import ro.ghionoiu.frequentwords.process.pair.FrequencyPairSortedSet;
 import ro.ghionoiu.frequentwords.process.pair.FrequencyPair;
 import org.junit.Test;
 import static org.junit.Assert.assertThat;
@@ -22,7 +23,7 @@ public class WordStorageTest {
     
     @Test
     public void will_store_frequency_and_words_as_pairs_into_a_sorted_set() {
-        WordSortedSet sortedSet = new WordSortedSet();
+        FrequencyPairSortedSet sortedSet = new FrequencyPairSortedSet();
         WordStorage instance = new WordStorage(sortedSet);
         
         instance.store("a");
@@ -32,19 +33,7 @@ public class WordStorageTest {
     
     @Test
     public void will_increment_frequency_for_existing_words() {
-        WordSortedSet sortedSet = new WordSortedSet();
-        sortedSet.add(new FrequencyPair(1, "a"));
-        WordStorage instance = new WordStorage(sortedSet);
-        
-        instance.store("a");
-        
-        assertThat(sortedSet.contains(new FrequencyPair(2, "a")), is(true));
-    }
-    
-    @Test
-    public void the_first_frequency_pair_is_the_one_with_the_highest_frequency() {
-        WordSortedSet sortedSet = new WordSortedSet();
-        sortedSet.add(new FrequencyPair(1, "a"));
+        FrequencyPairSortedSet sortedSet = new FrequencyPairSortedSet();
         WordStorage instance = new WordStorage(sortedSet);
         
         instance.store("a");
@@ -55,19 +44,20 @@ public class WordStorageTest {
     
     @Test
     public void display_command_will_be_forwarded_to_the_first_pairs_in_set() {
-        WordSortedSet sortedSet = new WordSortedSet();
+        FrequencyPairSortedSet sortedSet = new FrequencyPairSortedSet();
         FrequencyPair highestPair = spy(new FrequencyPair(5, "a"));
         FrequencyPair secondHighestPair = spy(new FrequencyPair(4, "c"));
         
         sortedSet.add(highestPair);
         sortedSet.add(secondHighestPair);
-        sortedSet.add(new FrequencyPair(5, "c"));
+        sortedSet.add(new FrequencyPair(1, "c"));
         WordStorage instance = new WordStorage(sortedSet);
         
         OutputChannel outputChannel = mock(OutputChannel.class);
         
-        instance.displayFrequentWords(1, outputChannel);
+        instance.displayFrequentWords(2, outputChannel);
         verify(highestPair).displayToOutput(outputChannel);
+        verify(secondHighestPair).displayToOutput(outputChannel);
         
         assertThat(true, is(true));
     }
