@@ -11,7 +11,15 @@ import ro.ghionoiu.frequentwords.context.output.OutputChannel;
  * @author Iulian Ghionoiu <iulian.ghionoiu@exenne.ro>
  */
 public class WordStorage {
+    private WordSortedSet sortedSet;
+
+    public WordStorage() {
+        this(new WordSortedSet());
+    }
     
+    protected WordStorage(WordSortedSet sortedSet) {
+        this.sortedSet = sortedSet;
+    }
     
     public void store(String word) {
         
