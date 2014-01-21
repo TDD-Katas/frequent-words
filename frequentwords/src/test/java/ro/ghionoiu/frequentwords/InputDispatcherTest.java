@@ -10,7 +10,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
 import ro.ghionoiu.frequentwords.context.input.ArrayBasedInputChannel;
 import ro.ghionoiu.frequentwords.context.input.InputChannel;
-import ro.ghionoiu.frequentwords.context.output.OutputChannel;
 
 /**
  *
@@ -54,8 +53,7 @@ public class InputDispatcherTest {
     protected void runWith(InputChannel inputChannel, 
             FrequentWordsObtainer frequentWordsObtainer) {
         InputDispatcher dispatcher = new InputDispatcher(
-                inputChannel, mock(OutputChannel.class), 
-                frequentWordsObtainer);
+                inputChannel, frequentWordsObtainer);
         dispatcher.run();
     }
 

@@ -10,18 +10,16 @@ import ro.ghionoiu.frequentwords.context.output.OutputChannel;
 public class InputDispatcher {
     public static final String TOKEN_SEPARATOR = "=";
     private InputChannel inputChannel;
-    private OutputChannel outputChannel;
     private FrequentWordsObtainer frequentWordsObtainer;
 
     public InputDispatcher(
-            InputChannel inputChannel, 
+            InputChannel inputChannel,
             OutputChannel outputChannel) {
-        this(inputChannel, outputChannel, new FrequentWordsObtainer());
+        this(inputChannel, new FrequentWordsObtainer(outputChannel));
     }
     
-    public InputDispatcher(InputChannel inputChannel, OutputChannel outputChannel, FrequentWordsObtainer frequentWordsObtainer) {
+    public InputDispatcher(InputChannel inputChannel, FrequentWordsObtainer frequentWordsObtainer) {
         this.inputChannel = inputChannel;
-        this.outputChannel = outputChannel;
         this.frequentWordsObtainer = frequentWordsObtainer;
     }
     
