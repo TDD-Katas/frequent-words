@@ -1,5 +1,6 @@
 package ro.ghionoiu.frequentwords;
 
+import ro.ghionoiu.frequentwords.process.FrequentWords;
 import ro.ghionoiu.frequentwords.context.input.InputChannel;
 import ro.ghionoiu.frequentwords.context.output.OutputChannel;
 
@@ -10,15 +11,15 @@ import ro.ghionoiu.frequentwords.context.output.OutputChannel;
 public class InputDispatcher {
     public static final String TOKEN_SEPARATOR = "=";
     private InputChannel inputChannel;
-    private FrequentWordsObtainer frequentWordsObtainer;
+    private FrequentWords frequentWordsObtainer;
 
     public InputDispatcher(
             InputChannel inputChannel,
             OutputChannel outputChannel) {
-        this(inputChannel, new FrequentWordsObtainer(outputChannel));
+        this(inputChannel, new FrequentWords(outputChannel));
     }
     
-    public InputDispatcher(InputChannel inputChannel, FrequentWordsObtainer frequentWordsObtainer) {
+    public InputDispatcher(InputChannel inputChannel, FrequentWords frequentWordsObtainer) {
         this.inputChannel = inputChannel;
         this.frequentWordsObtainer = frequentWordsObtainer;
     }

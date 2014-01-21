@@ -4,12 +4,15 @@
  */
 package ro.ghionoiu.frequentwords;
 
+import ro.ghionoiu.frequentwords.process.FrequentWords;
 import org.junit.Test;
+import ro.ghionoiu.frequentwords.InputDispatcher;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
 import ro.ghionoiu.frequentwords.context.input.ArrayBasedInputChannel;
 import ro.ghionoiu.frequentwords.context.input.InputChannel;
+import ro.ghionoiu.frequentwords.process.FrequentWords;
 
 /**
  *
@@ -31,7 +34,7 @@ public class InputDispatcherTest {
         InputChannel inputChannel = setInputs(
                 "N = 3",
                 "list = x,y");
-        FrequentWordsObtainer frequentWordsObtainer = mock(FrequentWordsObtainer.class);
+        FrequentWords frequentWordsObtainer = mock(FrequentWords.class);
         
         runWith(inputChannel, frequentWordsObtainer);
         
@@ -47,11 +50,11 @@ public class InputDispatcherTest {
     }
     
     protected void runWith(InputChannel inputChannel) {
-        runWith(inputChannel, mock(FrequentWordsObtainer.class));
+        runWith(inputChannel, mock(FrequentWords.class));
     }
 
     protected void runWith(InputChannel inputChannel, 
-            FrequentWordsObtainer frequentWordsObtainer) {
+            FrequentWords frequentWordsObtainer) {
         InputDispatcher dispatcher = new InputDispatcher(
                 inputChannel, frequentWordsObtainer);
         dispatcher.run();
