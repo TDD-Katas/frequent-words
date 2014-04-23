@@ -16,23 +16,21 @@
 
         <p>
             <b>Input:</b><br/>
-            <code>
-                <span concordion:set="#firstLine">N = 3</span><br/>
-            </code>
+            <code concordion:set="#firstLine">
+                N = 3
+            </code><br/>
             <b>and</b><br/>
-            <code>
-                <span concordion:set="#secondLine">list = united, states, america, north, america, south, america, south, africa, north, korea</span>
+            <code concordion:set="#secondLine">
+                list = united, states, america, north, america, south, america, south, africa, north, korea
             </code>
         </p>
 
         <p>
             <b>Output:</b><br/>
-            <code>
-                <span concordion:assertEquals="getFrequentWords(#numerOfResult,#list)">
-                    3 america<br/>
-                    2 north<br/>
-                    2 south<br/>
-                </span>
+            <code concordion:assertEquals="getFrequentWords(#firstLine,#secondLine)">
+                3 america<br/>
+                2 north<br/>
+                2 south<br/>
             </code>
         </p>
 

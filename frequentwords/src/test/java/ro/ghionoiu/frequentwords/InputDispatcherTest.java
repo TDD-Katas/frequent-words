@@ -4,7 +4,7 @@
  */
 package ro.ghionoiu.frequentwords;
 
-import ro.ghionoiu.frequentwords.process.FrequentWords;
+import java.util.List;
 import org.junit.Test;
 import ro.ghionoiu.frequentwords.InputDispatcher;
 import static org.mockito.Mockito.mock;

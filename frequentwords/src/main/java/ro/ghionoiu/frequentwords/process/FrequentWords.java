@@ -25,9 +25,9 @@ public class FrequentWords {
     }
     
     public void performRequest(int n, String list) {
-        String[] words = list.split("[, ]");
+        String[] words = list.split(",");
         for (String word : words) {
-            wordStorage.store(word);
+            wordStorage.store(word.trim());
         }
         wordStorage.displayFrequentWords(n, outputChannel);
     }
